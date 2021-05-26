@@ -19,7 +19,7 @@
 # in the templates via {{ site.myvariable }}.
 
 title: Yet another blog
-email: your-email@example.com
+email: revervand@mail.ru
 description: >- # this means to ignore newlines until "baseurl:"
   I am a reverse engineer from Russia. 
   This blog may contain solutions to CTF-tasks, small personal findings and topics of interest to me.
