@@ -21,8 +21,7 @@
 title: Yet another blog
 email: revervand@mail.ru
 description: >- # this means to ignore newlines until "baseurl:"
-  I am a reverse engineer from Russia. 
-  This blog may contain solutions to CTF-tasks, small personal findings and topics of interest to me.
+  Reverse/PWN/CTF/Misc blog.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: rev_ker
