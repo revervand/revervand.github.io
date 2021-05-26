@@ -109,14 +109,14 @@ from Crypto.Cipher import AES
 from binascii import unhexlify
 
 key =
-unhexlify(\"2D91949EA0C067B0BCF4F47F066D2B39B0A54F78FBF5DB2BA021A1F10DE50FC2\")
-iv = unhexlify(\"7925CFE7133F19A8C6A14D3868B8E1BC\")
-data = open(\"plan_important.docx\",\'rb\').read()
+unhexlify("2D91949EA0C067B0BCF4F47F066D2B39B0A54F78FBF5DB2BA021A1F10DE50FC2")
+iv = unhexlify("7925CFE7133F19A8C6A14D3868B8E1BC")
+data = open("plan_important.docx",'rb').read()
 
 ctx = AES.new(key, AES.MODE_OPENPGP, iv=iv)
 out = ctx.decrypt(data)
 
-fd = open(\"out.docx\", \'wb\')
+fd = open("out.docx", 'wb')
 fd.write(out)
 fd.close()
 {% endhighlight %}
