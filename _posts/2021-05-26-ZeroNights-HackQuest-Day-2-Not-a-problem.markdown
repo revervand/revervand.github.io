@@ -1,12 +1,10 @@
 ---
 layout: post
-title:  "ZeroNights 2021 HackQuest -- Task 2 -- NOT A PROBLEM"
+title:  "ZeroNights 2021 HackQuest - Task 2 - NOT A PROBLEM"
 date:   2021-05-26 21:56:00 +0300
 categories: ctf writeup
 tags: reverse zeronights hackquest ransomware windows
 ---
-
-**ZeroNights 2021 HackQuest -- Task 2 -- NOT A PROBLEM.**
 
 *Type: CTF task*
 
