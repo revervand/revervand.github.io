@@ -192,3 +192,6 @@ print(res)
 Now, let\'s just run our script.
 
 ![](/assets/2021-07-27-CyBRICS-CTF-2021-Reverse-Paired/image17.png)
+
+
+**Summary**: It was a pretty interesting task and I really like the concept of such reverse engineering tasks. 
