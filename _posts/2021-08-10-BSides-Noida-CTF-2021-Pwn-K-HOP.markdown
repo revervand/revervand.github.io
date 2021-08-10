@@ -139,6 +139,7 @@ On a modern system with standard settings, you can see something like
 this:
 
 ![](/assets/2021-08-10-BSides-Noida-CTF-2021-Pwn-K-HOP/image4.png)
+
 And in our task, this value was rewritten in one of the initializing
 scripts. As a result, we have:
 
@@ -161,8 +162,6 @@ if (*off >= len) {
 }
 memcpy(kernel_stack, message, len);
 {% endhighlight %}
-
-memcpy(kernel_stack, message, len); // copy 48 from mem
 
 Thus, if we can write data at address zero that exceeds the size of the
 buffer on the stack, then we will get a kernel stack overflow.
@@ -441,3 +440,6 @@ Great, the task has been solved.
 
 All files (kernel image, FS, exploit, source code, help scripts) you can
 find by this [link](/assets/2021-08-10-BSides-Noida-CTF-2021-Pwn-K-HOP/khop_tasks_files_and_exploit.7z).
+
+**Summary**: For me, this task was quite interesting, because for the first time I solved the problem of kernel-pwn in a CTF.
+
