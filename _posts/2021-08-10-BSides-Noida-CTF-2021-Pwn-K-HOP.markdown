@@ -72,36 +72,23 @@ The only driver function that we can interact with from our program is
 «dev_read».
 
 {% highlight c %}
-static int __init dev_init(void) /* Constructor */
+static ssize_t dev_read(struct file *fp, char *buf, size_t size, loff_t *off)
 {
-    int ret;
-    struct device *dev_ret;
-
-    if ((ret = alloc_chrdev_region(&first, 0, 1, DEVICE_NAME)) < 0)
-    {
-        return ret;
+	char kernel_stack[48];
+	int len = strlen(message);
+    if (*off >= len) {
+        return 0; /* end of file */
     }
-    if (IS_ERR(cl = class_create(THIS_MODULE, DEVICE_NAME)))
-    {
-        unregister_chrdev_region(first, 1);
-        return PTR_ERR(cl);
+    memcpy(kernel_stack, message, len);
+	if(len > size - *off) {
+        len = size - *off;
     }
-    if (IS_ERR(dev_ret = device_create(cl, NULL, first, NULL, DEVICE_NAME)))
-    {
-        class_destroy(cl);
-        unregister_chrdev_region(first, 1);
-        return PTR_ERR(dev_ret);
+    if(copy_to_user(buf, kernel_stack + *off, len)) {
+        return -EFAULT;
     }
 
-    cdev_init(&c_dev, &pugs_fops);
-    if ((ret = cdev_add(&c_dev, first, 1)) < 0)
-    {
-        device_destroy(cl, first);
-        class_destroy(cl);
-        unregister_chrdev_region(first, 1);
-        return ret;
-    }
-    return 0;
+    *off += len;
+    return len;
 }
 {% endhighlight %}
 
