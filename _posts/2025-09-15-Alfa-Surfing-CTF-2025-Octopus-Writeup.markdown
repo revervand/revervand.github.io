@@ -24,7 +24,10 @@ So we need to filter TLS traffic and other stuff. And we get something like this
 
 ![](/assets/2025-09-15-Alfa-Surfing-CTF-2025-Octopus-Writeup/filtred_pcap.png)
 
-Filter: `!tls and (ip.addr != 217.12.104.100 and ip.addr != 91.206.127.56 and ip.addr != 216.58.211.228) && !dns`
+Filter: 
+```
+!tls and (ip.addr != 217.12.104.100 and ip.addr != 91.206.127.56 and ip.addr != 216.58.211.228) && !dns
+```
 
 We see suspicios BT-DHT packets. This is Bittorent protocol. And after we see Bittorent hash (BTH).
 
@@ -99,7 +102,10 @@ And after that we need to interact with process and type username and command af
 ![](/assets/2025-09-15-Alfa-Surfing-CTF-2025-Octopus-Writeup/local_shell.png)
 
 
-So final payload is `"%34$n%4194328c%14$n%38488c%35$n_" + p64(0x703028 + 4) + p64(0x703028)`
+So final payload is 
+```
+"%34$n%4194328c%14$n%38488c%35$n_" + p64(0x703028 + 4) + p64(0x703028)
+```
 
 
 Exploit code:
@@ -125,6 +131,7 @@ if __name__ == "__main__":
 Run and get flag!
 
 ![](/assets/2025-09-15-Alfa-Surfing-CTF-2025-Octopus-Writeup/flag.png)
+
 
 
 **Summary**: Thanks the author (@awengar) for the task. It was fun!
